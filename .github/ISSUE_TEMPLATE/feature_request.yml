@@ -1,0 +1,292 @@
+name: 💡 Feature Request
+description: Suggest a new feature or enhancement for this project
+title: "[Feature]: "
+labels: ["enhancement", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Thanks for taking the time to suggest a feature!
+        
+        Please fill out the sections below to help us understand your request. The more detail you provide, the better we can evaluate and prioritize your suggestion.
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Prerequisites
+      description: Please confirm you have completed these steps before submitting
+      options:
+        - label: I have searched the existing issues and this feature has not been requested before
+          required: true
+        - label: I have checked the documentation and this functionality doesn't currently exist
+          required: true
+        - label: I have considered whether this could be solved with existing features
+          required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: |
+        Describe the problem or limitation you're experiencing. Focus on the **why** before the **what**.
+        
+        **Format:** When [situation], this happens [negative impact], which is a problem because [consequence].
+      placeholder: |
+        When I try to export large datasets with more than 10,000 rows...
+        The browser freezes and eventually times out...
+        This is a problem because users lose their work and can't access critical data for reporting...
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: user-story
+    attributes:
+      label: User Story (Optional)
+      description: |
+        Frame your request as a user story to help us understand the user perspective.
+        
+        **Format:** As a [type of user], I want to [perform some task], so that I can [achieve some goal].
+      placeholder: |
+        As a data analyst,
+        I want to export datasets in the background without blocking the UI,
+        So that I can continue working while large reports are being generated.
+      render: markdown
+    validations:
+      required: false
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed Solution
+      description: |
+        Describe your proposed solution. What should happen? How should it work?
+        
+        Be as specific as possible about the desired behavior and user experience.
+      placeholder: |
+        Add a background export process that:
+        1. Allows users to initiate an export and continue working
+        2. Shows a progress indicator in the notification area
+        3. Sends a notification when the export is complete
+        4. Provides a download link that remains available for 24 hours
+        
+        Users would access this feature by clicking "Export" and selecting "Background Export" from a dropdown menu.
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: |
+        What other solutions or approaches have you considered? What are their pros and cons?
+      placeholder: |
+        1. **Client-side streaming**: Process data in chunks on the client
+           - Pro: No server changes needed
+           - Con: Still blocks browser, limited by memory
+        
+        2. **Pagination with manual downloads**: Break exports into smaller files
+           - Pro: Simple to implement
+           - Con: Poor UX, requires manual work to combine files
+        
+        3. **Email delivery**: Send completed export via email
+           - Pro: User can leave the page
+           - Con: Email delivery issues, file size limits
+      render: markdown
+    validations:
+      required: false
+
+  - type: textarea
+    id: current-workaround
+    attributes:
+      label: Current Workaround
+      description: |
+        How are you currently handling this situation? What are the limitations of your workaround?
+      placeholder: |
+        Currently, I export data in smaller batches of 1,000 rows at a time, then manually combine them in Excel.
+        
+        This is time-consuming (15-20 minutes for a full dataset), error-prone, and prevents me from using the application while exports are running.
+      render: markdown
+    validations:
+      required: false
+
+  - type: dropdown
+    id: feature-type
+    attributes:
+      label: Feature Type
+      description: What type of feature request is this?
+      options:
+        - New functionality (enables something previously impossible)
+        - Enhancement (improves existing functionality)
+        - Performance improvement (makes existing features faster)
+        - Developer experience improvement
+        - Documentation or tooling
+      default: 0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority / Impact
+      description: How important is this feature to you and your workflow?
+      options:
+        - "P3: Nice to have - would improve experience"
+        - "P2: Important - significant pain point affecting productivity"
+        - "P1: Critical - blocking essential workflows or business needs"
+      default: 0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: user-impact
+    attributes:
+      label: User Impact Estimate
+      description: How many users do you think would benefit from this feature?
+      options:
+        - Just me or very few users
+        - Small subset of users (< 10%)
+        - Moderate number of users (10-50%)
+        - Large number of users (> 50%)
+        - All or nearly all users
+        - Unknown / Not sure
+      default: 5
+    validations:
+      required: false
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case Scenario
+      description: |
+        Describe a real-world situation where you would use this feature. Be specific about context, frequency, and workflow.
+      placeholder: |
+        **Context:** As a data analyst preparing quarterly executive reports
+        
+        **Frequency:** 4 times per year, plus ad-hoc requests from leadership
+        
+        **Workflow:**
+        1. Filter dataset for relevant time period and metrics
+        2. Initiate export of 50,000+ rows
+        3. While export runs (currently 10-15 min), I need to prepare visualizations in other tools
+        4. Currently can't do step 3 because browser is locked up
+        
+        **Outcome:** With background export, I could save 30-45 minutes per report by working on other tasks while data exports.
+      render: markdown
+    validations:
+      required: false
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: |
+        What would need to be true for this feature to be considered complete? Use checkboxes for each criterion.
+        
+        Optional but helpful for understanding your expectations.
+      placeholder: |
+        - [ ] User can initiate a background export from the export menu
+        - [ ] Export process continues even if user navigates to other pages
+        - [ ] Progress indicator shows export status in real-time
+        - [ ] User receives in-app notification when export completes
+        - [ ] Download link remains available for at least 24 hours
+        - [ ] Failed exports show clear error messages with retry option
+        - [ ] User can have up to 3 concurrent background exports
+      value: |
+        - [ ] 
+      render: markdown
+    validations:
+      required: false
+
+  - type: textarea
+    id: benefits
+    attributes:
+      label: Expected Benefits
+      description: |
+        What benefits or value would this feature provide? Consider user experience, business impact, and strategic value.
+      placeholder: |
+        **User Experience:**
+        - Reduces wait time and frustration
+        - Enables multitasking
+        - Improves perceived performance
+        
+        **Business Impact:**
+        - Increases user productivity by 30-45 min per report
+        - Reduces support tickets related to export timeouts
+        - Enables handling of larger datasets (competitive advantage)
+        
+        **Strategic Value:**
+        - Positions product for enterprise customers with larger data needs
+        - Aligns with roadmap goal of handling 100K+ row datasets
+      render: markdown
+    validations:
+      required: false
+
+  - type: textarea
+    id: technical-considerations
+    attributes:
+      label: Technical Considerations (Optional)
+      description: |
+        If you have technical knowledge, share any implementation ideas, constraints, or architectural considerations.
+        
+        This section is completely optional and intended for contributors with technical expertise.
+      placeholder: |
+        **Possible Implementation:**
+        - Backend job queue (e.g., Sidekiq, Bull, Celery)
+        - WebSocket or Server-Sent Events for progress updates
+        - S3/blob storage for completed exports with signed URLs
+        
+        **Constraints:**
+        - Must support exports up to 100K rows minimum
+        - Should work across multiple server instances (stateless)
+        - Need to consider storage cleanup for abandoned exports
+        
+        **Dependencies:**
+        - May require database migration for export tracking
+        - Could leverage existing background job infrastructure if available
+      render: markdown
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: |
+        Add any other context, screenshots, mockups, links, or examples that help explain your request.
+        
+        **Tip:** You can attach images by dragging and dropping them into this text area.
+      placeholder: |
+        - Screenshot of current export dialog
+        - Mockup of proposed background export UI
+        - Link to similar feature in competing product
+        - Reference to related discussion or issue
+    validations:
+      required: false
+
+  - type: dropdown
+    id: contribution-willingness
+    attributes:
+      label: Contribution Willingness
+      description: Would you be willing to contribute to implementing this feature?
+      options:
+        - "Yes, I can submit a pull request"
+        - "Yes, with guidance from maintainers"
+        - "Maybe, depending on complexity"
+        - "No, I don't have the capacity right now"
+        - "Not applicable (not a developer)"
+      default: 3
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: code-of-conduct
+    attributes:
+      label: Code of Conduct
+      description: By submitting this feature request, you agree to follow our Code of Conduct
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
