@@ -247,7 +247,6 @@ body:
         **Dependencies:**
         - May require database migration for export tracking
         - Could leverage existing background job infrastructure if available
-      render: markdown
     validations:
       required: false
 
