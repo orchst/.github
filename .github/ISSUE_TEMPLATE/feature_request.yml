@@ -112,13 +112,15 @@ body:
     id: feature-type
     attributes:
       label: Feature Type
-      description: What type of feature request is this?
+      description: |
+        What type of feature request is this?
+        
+        **Business feature:** User-facing functionality that drives customer value or revenue (what users see/experience)
+        **Technical improvement:** Internal improvements like DX, architecture, performance optimizations, build systems (what users don't directly see)
       options:
-        - New functionality (enables something previously impossible)
-        - Enhancement (improves existing functionality)
-        - Performance improvement (makes existing features faster)
-        - Developer experience improvement
-        - Documentation or tooling
+        - Business feature (user-facing, drives customer value/revenue)
+        - Technical improvement (DX, architecture, performance, tooling)
+        - Documentation
       default: 0
     validations:
       required: true
