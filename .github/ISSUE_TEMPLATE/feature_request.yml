@@ -2,6 +2,7 @@ name: 💡 Feature Request
 description: Suggest a new feature or enhancement for this project
 title: "[Feature]: "
 labels: ["enhancement", "needs-triage"]
+type: feature
 assignees: []
 
 body:
